@@ -1,5 +1,6 @@
 
-<!-- omit in toc --> # Introduction
+<!-- omit in toc -->
+# Introduction
 
 This is a repo which contains many useful CPP headers. Current functions or tools:
 
@@ -22,6 +23,10 @@ Empty string is the default value of the second argument.
 
 ## Colorizing text in console
 
+This header currently support both linux and windows platform. The implementation of this file is inspired from [doctest](https://github.com/onqtam/doctest)
+
 ``` C++
 #include "color.h"
+std::cout << Color::Cyan << "Hello world!" << std::endl; // Set the color of text to Cyan
+std::cout << Color::None; // Reset to default color
 ```
