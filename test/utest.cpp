@@ -8,23 +8,23 @@ using std::endl;
 #ifdef _WIN32
 #include <windows.h>
 
-void sleep(unsigned milliseconds)
+void u_sleep(unsigned milliseconds)
 {
     Sleep(milliseconds);
 }
 #else
 #include <unistd.h>
 
-void sleep(unsigned milliseconds)
+void u_sleep(unsigned milliseconds)
 {
-    usleep(milliseconds * 1000); // takes microseconds
+    sleep(milliseconds / 1000); // takes microseconds
 }
 #endif
 
 int main()
 {
     timer Timer(std::cout, "Sleeping");
-    sleep(8000);
+    u_sleep(2000);
     Timer.span();
     return 0;
 }
