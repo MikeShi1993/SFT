@@ -15,8 +15,8 @@ A simple utility class helps track the run time of functions or whole program.
 
 ``` C++
 #include "timer.h"
-timer Timer(std::cout, "message") //Initialize an instance
-Timer.span() //Compute the time from the initialization to current
+Timer timer(std::cout, "message") //Initialize an instance
+timer.span() //Compute the time from the initialization to current
 ```
 
 Empty string is the default value of the second argument.
