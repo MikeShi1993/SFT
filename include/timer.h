@@ -5,15 +5,15 @@
 #include <iomanip>
 #include <string_view>
 
-class timer
+class Timer
 {
 public:
-	timer(std::ostream &output, const std::string_view &s = "");
+	Timer(std::ostream &output, const std::string_view &s = "");
 	void span() const;
-	~timer();
+	~Timer();
 
 private:
-	// Static member : store the info that how many timer currently running
+	// Static member : store the info that how many Timer currently running
 	inline static size_t count_total = 0;
 
 	// private members
@@ -26,13 +26,13 @@ private:
 	void indention() const;
 };
 
-inline timer::timer(std::ostream &output, const std::string_view &s) : os(output), start(std::chrono::steady_clock::now()), message(s), count_instance(count_total++)
+inline Timer::Timer(std::ostream &output, const std::string_view &s) : os(output), start(std::chrono::steady_clock::now()), message(s), count_instance(count_total++)
 {
 	indention();
 	os << "Timer: " << message << " begins..." << std::endl;
 }
 
-inline void timer::span() const
+inline void Timer::span() const
 {
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
 	auto time_span = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -41,12 +41,12 @@ inline void timer::span() const
 	os << time_span.count() << "ms" << std::endl;
 }
 
-inline timer::~timer()
+inline Timer::~Timer()
 {
 	--count_total;
 }
 
-inline void timer::indention() const
+inline void Timer::indention() const
 {
 	for (size_t i = 0; i != count_instance; ++i)
 	{

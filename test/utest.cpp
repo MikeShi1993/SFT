@@ -23,8 +23,8 @@ void u_sleep(unsigned milliseconds)
 
 int main()
 {
-    timer Timer(std::cout, "Sleeping");
+    Timer timer(std::cout, "Sleeping");
     u_sleep(2000);
-    Timer.span();
+    timer.span();
     return 0;
 }
